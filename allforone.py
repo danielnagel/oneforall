@@ -1,6 +1,7 @@
 from os import listdir, remove
 from os.path import isfile, join, exists
 import sys
+from clihandler.nullwriter import mute_stderr
 #from optparse import OptionParser
 # Slimit Packet muss installiert werden: pip install slimit
 from slimit import minify
@@ -11,9 +12,6 @@ def isextension(extension, file):
     return file.endswith(extension)
 
 
-class NullWriter(object):
-    def write(self, arg):
-        pass
 
 # minify = False
 
@@ -65,11 +63,7 @@ for file in onlyfiles:
     filestreamin.close()
 
 if(len(sys.argv) == 5):
-    nullwrite = NullWriter()
-    oldstdout = sys.stderr
-    sys.stderr = nullwrite #disable stdout
-    filecontentin = minify(filecontentin, mangle=True)
-    sys.stderr = oldstdout #enable stdout
+    filecontentin = mute_stderr(minify, filecontentin, True)
 
 filestreamout = open(join(dirpath, fileout), "a")
 filestreamout.write(filecontentin + "\n")
