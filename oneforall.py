@@ -1,5 +1,6 @@
 import sys
 from filehandler.minify import merge_files
+from synchronisehandler.synchroniser import synchronise
 from optparse import OptionParser
 
 usage = "Nutzung: %prog [options]"
@@ -16,7 +17,7 @@ parser.add_option("-e", "--extension", action="store", type="string",
                   dest="extension", default="js",
                   help="Nach bestimmter Dateiendung Daten zusammenfassen")
 parser.add_option("-d", "--destdir", action="store", type="string",
-                  dest="destpath", default=".",
+                  dest="dstpath", default=".",
                   help="Zielverzeichnis für eine Kopie des Projekts")
 parser.add_option("-p", "--sharepoint", action="store_true", dest="sharepoint",
                   default=False,
@@ -28,3 +29,5 @@ if "." in options.extension:
     sys.exit(0)
 
 merge_files(options.srcpath, options.outfile, options.extension, options.minifyjs)
+
+synchronise(options.srcpath, options.dstpath)
