@@ -11,7 +11,7 @@ def synchronise(src, dst):
     """
     if isdir("./temp"):
         rmtree("./temp", onerror=remove_readonly)
-    copytree(src, "./temp", ignore=ignore_patterns('.git*', '*.md'))
+    copytree(src, "./temp", ignore=ignore_patterns('.git*', '*.md', 'doc'))
 #    changeMod("./temp")
 
 def removeFiles(path):
