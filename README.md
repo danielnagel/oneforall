@@ -9,10 +9,12 @@ OneForAll ist ein Tool mit dem alle Schritte bei der Entwicklung einer SharePoin
 ### Wie verwende ich OneForAll? ###
 
 In der Eingabeaufforderung
+
 * python oneforall.py \[option\]
 
 Optionen
-* -h, --help
+
+* \-h, \-\-help
     * Zeigt alle Optionen an.
 * -s SRCPATH, --sourcedir=SRCPATH
     * JS Verzeichnis oder Projektverzeichnis
