@@ -14,7 +14,7 @@ In der Eingabeaufforderung
 
 Optionen
 
-* \-h, \-\-help
+* -h, --help
     * Zeigt alle Optionen an.
 * -s SRCPATH, --sourcedir=SRCPATH
     * JS Verzeichnis oder Projektverzeichnis
@@ -25,10 +25,10 @@ Optionen
 * -e EXTENSION, --extension=EXTENSION
     * Nach bestimmter Dateiendung Daten zusammenfassen
 * -d DSTPATH, --destdir=DSTPATH
-    * Zielverzeichnis für eine Kopie des Projekts
+    * Zielverzeichnis fÃ¼r eine Kopie des Projekts
 * -p, --sharepoint
     * Aktiviert Passwortabfrage und SharePoint Verzeichnisse
 
-### Wer ist verantwortlich für dieses Projekt? ###
+### Wer ist verantwortlich fÃ¼r dieses Projekt? ###
 
 * Daniel
