@@ -1,6 +1,6 @@
 import sys
 from filehandler.minify import merge_files
-from synchronisehandler.synchroniser import synchronise
+from synchronisehandler.synchroniser import synchronise, removeFiles
 from optparse import OptionParser
 
 usage = "Nutzung: %prog [options]"
@@ -28,6 +28,8 @@ if "." in options.extension:
     print("Bitte nur die Dateiendung ohne '.' eingeben.")
     sys.exit(0)
 
-merge_files(options.srcpath, options.outfile, options.extension, options.minifyjs)
-
 synchronise(options.srcpath, options.dstpath)
+
+merge_files("./temp/js", options.outfile, options.extension, options.minifyjs)
+
+removeFiles("./temp/js")
