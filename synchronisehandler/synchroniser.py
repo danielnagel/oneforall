@@ -1,8 +1,9 @@
 from shutil import copytree, rmtree, ignore_patterns
-from os import listdir, remove, walk, chmod
-from os.path import isfile, join, exists, isdir
+from os import listdir, remove, chmod
+from os.path import isfile, join, isdir
 from filehandler.filehandler import isextension
 import stat
+
 
 def synchronise(src, dst):
     """ Kopiert alle Dateien eines Verzeichnisses in ein anderes.
@@ -11,8 +12,8 @@ def synchronise(src, dst):
     """
     if isdir("./temp"):
         rmtree("./temp", onerror=remove_readonly)
-    copytree(src, "./temp", ignore=ignore_patterns('.git*', '*.md', 'doc'))
-#    changeMod("./temp")
+    copytree(src, "./temp", ignore=ignore_patterns('.git*', '*.md', 'doc', 'res*', 'Test*', 'ver*'))
+
 
 def removeFiles(path):
     for file in listdir(path):
@@ -20,7 +21,9 @@ def removeFiles(path):
             if not isextension('min.js', file):
                 remove(join(path, file))
 
+
 def remove_readonly(func, path, _):
-    "Setze das Schreiben Bit und entferne die Datei."
-    os.chmod(path, stat.S_IWRITE)
+    """ Setze das Schreiben Bit und entferne die Datei.
+    """
+    chmod(path, stat.S_IWRITE)
     func(path)
