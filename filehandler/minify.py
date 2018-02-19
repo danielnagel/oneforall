@@ -1,5 +1,5 @@
 from clihandler.nullwriter import mute_stderr
-from filehandler.filehandler import remove_oldfile, list_files
+from filehandler.filehandler import remove_oldfile, list_files_byextension
 from slimit import minify
 from os.path import join
 
@@ -39,7 +39,7 @@ def merge_files(dirpath, outfile):
     print("\nFühre Dateien im Verzeichnis '" + dirpath + "' zusammen.")
     outfile += ".min." + extension
     remove_oldfile(dirpath, outfile)
-    filelist = list_files(dirpath, extension)
+    filelist = list_files_byextension(dirpath, extension)
     if(len(filelist) < 1):
         print("Zusammenführung abgebrochen.")
         return
