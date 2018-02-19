@@ -4,8 +4,7 @@ from slimit import minify
 from os.path import join
 
 
-
-def join_files(filelist, dirpath, minifyjs):
+def join_files(filelist, dirpath):
     """ Liest den Inhalt der Dateien in der Liste und fügt deren Inhalt zu
         einem String zusammen und gibt diesen zurück.
         Ist die Option minifyjs=True wird die Datei komprimiert.
@@ -13,11 +12,11 @@ def join_files(filelist, dirpath, minifyjs):
     filecontentin = ""
     for file in filelist:
         filestreamin = open(join(dirpath, file), "r")
-        filecontentin += filestreamin.read();
+        filecontentin += filestreamin.read()
         filestreamin.close()
 
-    if(minifyjs):
-        filecontentin = mute_stderr(minify, filecontentin, True)
+    #  Zusammengeführte Dateien verkleinern.
+    filecontentin = mute_stderr(minify, filecontentin, True)
 
     return filecontentin
 
@@ -32,20 +31,18 @@ def write_newfile(dirpath, outfile, newfilecontent):
     print("Neu erstellte Datei: ", outfile)
 
 
-def merge_files(dirpath, outfile, extension, minifyjs):
+def merge_files(dirpath, outfile):
     """ Fügt mehrere Dateien, innerhalb eines Verzeichnisses, zu einer zusammen
         und kompremiert JavaScript-Dateien, wenn dies gewünscht ist.
     """
+    extension = "js"
     print("\nFühre Dateien im Verzeichnis '" + dirpath + "' zusammen.")
-    if(minifyjs):
-        outfile += ".min." + extension
-    else:
-        outfile += "." + extension
+    outfile += ".min." + extension
     remove_oldfile(dirpath, outfile)
     filelist = list_files(dirpath, extension)
     if(len(filelist) < 1):
         print("Zusammenführung abgebrochen.")
         return
-    newfilecontent = join_files(filelist, dirpath, minifyjs)
+    newfilecontent = join_files(filelist, dirpath)
     write_newfile(dirpath, outfile, newfilecontent)
     print("Zusammenführung abgeschlossen.")
