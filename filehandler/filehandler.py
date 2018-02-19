@@ -1,5 +1,6 @@
-from os import listdir, remove
-from os.path import isfile, join, exists
+from os import listdir, remove, chmod
+from os.path import isfile, join, exists, isdir
+from shutil import copytree, rmtree, ignore_patterns
 
 
 def isextension(extension, file):
@@ -23,7 +24,35 @@ def list_files(dirpath, extension):
         Wurde keine Datei gefunden, wird eine leere Liste zurückgegeben.
     """
     onlyfiles = [file for file in listdir(dirpath)
-                if isfile(join(dirpath, file)) and isextension(extension, file)]
-    if len(onlyfiles) < 1: #  Keine Dateien gefunden.
+                 if isfile(join(dirpath, file))
+                 and isextension(extension, file)]
+    if len(onlyfiles) < 1:
+        #  Keine Dateien gefunden.
         print("Keine Dateien mit der Endung '" + extension + "' gefunden.")
     return onlyfiles
+
+
+def copyFiles(src, dst):
+    """ Kopiert alle Dateien eines Verzeichnisses in ein anderes.
+        Dateien welche im Zielverzeichnis nicht benötigt werden, werden
+        entfernt.
+    """
+    if isdir("./temp"):
+        rmtree("./temp", onerror=remove_readonly)
+    copytree(src, "./temp", ignore=ignore_patterns('.git*', '*.md', 'doc', 'res*', 'Test*', 'ver*'))
+
+
+def removeFiles(path):
+    """ Löscht alle JavaScript Dateien die nicht die Endung 'min.js' haben.
+    """
+    for file in listdir(path):
+        if isfile(join(path, file)) and isextension('js', file):
+            if not isextension('min.js', file):
+                remove(join(path, file))
+
+
+def remove_readonly(func, path, _):
+    """ Setze das Schreiben Bit und entferne die Datei.
+    """
+    chmod(path, stat.S_IWRITE)
+    func(path)
