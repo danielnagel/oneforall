@@ -1,6 +1,12 @@
 # OneForAll #
 
-OneForAll ist ein Tool mit dem alle Schritte bei der Entwicklung einer SharePoint Webapp anfallen automatisiert werden.
+OneForAll ist ein Tool mit dem alle Schritte bei der Entwicklung einer
+SharePoint Webapp anfallen automatisiert werden.
+
+1. Zusammenfassen und kompremieren aller JavaScript Dateien.
+2. Hochladen aller Dateien ins SharePoint.
+
+Diese Schritte können auch getrennt voneinander ausgeführt werden.
 
 > ## ACHTUNG ##
 >
@@ -15,19 +21,19 @@ In der Eingabeaufforderung
 Optionen
 
 * -h, --help
-    * Zeigt alle Optionen an.
+    * Zeigt alle verfügbaren Optionen an.
 * -s SRCPATH, --sourcedir=SRCPATH
     * JS Verzeichnis oder Projektverzeichnis
-* -o OUTFILE, --output=OUTFILE
+* -o OUTFILE, --outfile=OUTFILE
     * Ausgabedatei der zusammengefassten JS
-* -m, --minify
-    * JS komprimieren
-* -e EXTENSION, --extension=EXTENSION
-    * Nach bestimmter Dateiendung Daten zusammenfassen
-* -d DSTPATH, --destdir=DSTPATH
-    * Zielverzeichnis für eine Kopie des Projekts
-* -p, --sharepoint
-    * Aktiviert Passwortabfrage und SharePoint Verzeichnisse
+* -u SUBSITE, --subsite=SUBSITE
+    * Unterwebseite des SharePoint Projekts.
+* -r RELATIVE, --relative-url=RELATIVE
+    * Relativer Pfad zu den Projektdateien (im SharePoint).
+
+### Geplante Erweiterung für OneForAll ###
+
+* Dynamisches erstellen der benötigten Projektstruktur.
 
 ### Wer ist verantwortlich für dieses Projekt? ###
 
