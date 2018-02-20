@@ -47,9 +47,9 @@ def copyFiles(src, dst):
         Dateien welche im Zielverzeichnis nicht benötigt werden, werden
         entfernt.
     """
-    if isdir("./temp"):
-        rmtree("./temp", onerror=remove_readonly)
-    copytree(src, "./temp", ignore=ignore_patterns('.git*', '*.md', 'doc',
+    if isdir(dst):
+        rmtree(dst, onerror=remove_readonly)
+    copytree(src, dst, ignore=ignore_patterns('.git*', '*.md', 'doc',
                                                    'res*', 'Test*', 'ver*'))
 
 
