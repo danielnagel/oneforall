@@ -49,7 +49,7 @@ def copyFiles(src, dst):
     """
     if isdir(dst):
         rmtree(dst, onerror=remove_readonly)
-    copytree(src, dst, ignore=ignore_patterns('.git*', '*.md', 'doc',
+    copytree(src, dst, ignore=ignore_patterns('.git*', '*.md', 'doc', '.*',
                                                    'res*', 'Test*', 'ver*'))
 
 
