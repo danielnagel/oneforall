@@ -6,7 +6,7 @@ from os.path import join, exists
 
 
 def isJSON(string):
-    """ Prüft ob eine valide JSON vorliegt.
+    """ Prueft ob eine valide JSON vorliegt.
 
         :param string: Die zu validierende JSON.
         :return: True bei einer validen JSON, ansonsten False.
@@ -19,9 +19,9 @@ def isJSON(string):
 
 
 def isBadRequest(status_code):
-    """ Prüft ob ein 4xx HTTP Status Code vorliegt.
+    """ Prueft ob ein 4xx HTTP Status Code vorliegt.
 
-        :param status_code: Der zu prüfende HTTP Status Code.
+        :param status_code: Der zu pruefende HTTP Status Code.
         :return: True wenn ein 4xx HTTP Status Code vorliegt, ansonsten False.
     """
     check = re.compile('4..')
@@ -32,9 +32,9 @@ def isBadRequest(status_code):
 
 
 def printReadableJSON(json):
-    """ Gibt eine JSON leserlich aus, für Debug Zwecke.
+    """ Gibt eine JSON leserlich aus, fuer Debug Zwecke.
 
-        :param json: Die zu verschönernde JSON.
+        :param json: Die zu verschoenernde JSON.
     """
     print(json.dumps(json.json(), sort_keys=True, indent=4))
 
@@ -50,15 +50,15 @@ def getDigestValue(username, password, requestUrl):
         :return: Digest Value, welcher den Benutzer authentifiziert. Oder None
                  wenn der request fehlgeschlagen ist.
     """
-    #  Header für die Kommunikation mit SharePoint vorbereiten
+    #  Header fuer die Kommunikation mit SharePoint vorbereiten
     headers = {'Content-Type': 'application/json; odata=verbose',
                'accept': 'application/json;odata=verbose'}
 
-    #  Request ausführen, um den Digest Value zu erhalten.
+    #  Request ausfuehren, um den Digest Value zu erhalten.
     result = requests.post(requestUrl + '_api/contextinfo', headers = headers,
                       auth = HttpNtlmAuth(username, password))
 
-    #  Request Status Code überprüfen
+    #  Request Status Code ueberpruefen
     if isBadRequest(result.status_code):
         print("Anfrage fehlgeschlagen.")
         print("Keinen Digest Value erhalten.")
@@ -76,7 +76,7 @@ def getDigestValue(username, password, requestUrl):
 
 def uploadFile(username, password, path, fileName, requestUrl,
                serverRelativeUrl, digestValue):
-    """ Lädt eine Datei ins SharePoint hoch.
+    """ Laedt eine Datei ins SharePoint hoch.
 
         :param username: Der Benutzername.
         :param password: Das Benutzer Passwort.
@@ -103,7 +103,7 @@ def uploadFile(username, password, path, fileName, requestUrl,
         try:
             file = open(uploadFile, 'rb')
         except:
-            print("Datei '" + uploadFile + "' kann nicht geöffnet werden.")
+            print("Datei '" + uploadFile + "' kann nicht geoeffnet werden.")
             return False
     else:
         print("Die Datei '" + uploadFile + "' ist nicht vorhanden!")
@@ -116,7 +116,7 @@ def uploadFile(username, password, path, fileName, requestUrl,
                            headers = headers, data=file.read(),
                            auth = HttpNtlmAuth(username, password))
 
-    #  Request Status Code überprüfen
+    #  Request Status Code ueberpruefen
     if isBadRequest(result.status_code):
         print("Anfrage fehlgeschlagen.")
         print("Keine Datei hochgeladen.")
@@ -151,7 +151,7 @@ def createFolder(username, password, requestUrl, serverRelativeUrl, newDirName,
     result = requests.post(requestUrl + getFolders, headers = headers,
                            auth = HttpNtlmAuth(username, password))
 
-    #  Request Status Code überprüfen
+    #  Request Status Code ueberpruefen
     if isBadRequest(result.status_code):
         print("Anfrage fehlgeschlagen. Status Code:", result.status_code)
         print("Verzeichnisse konnte nicht erstellt werden.")
@@ -184,10 +184,10 @@ def printFiles(username, password, requestUrl, serverRelativeUrl, digestValue):
     result = requests.post(requestUrl + getFiles, headers = headers,
                            auth = HttpNtlmAuth(username, password))
 
-    #  Request Status Code überprüfen
+    #  Request Status Code ueberpruefen
     if isBadRequest(result.status_code):
         print("Anfrage fehlgeschlagen.")
-        print("Dateien können nicht ausgeben werden.")
+        print("Dateien koennen nicht ausgeben werden.")
         return
 
     # Digest Value aus der JSON auslesen
@@ -197,4 +197,4 @@ def printFiles(username, password, requestUrl, serverRelativeUrl, digestValue):
             print(file['Name'])
     else:
         print("Keine valide JSON-Datei!")
-        print("Dateien können nicht ausgeben werden.")
+        print("Dateien koennen nicht ausgeben werden.")

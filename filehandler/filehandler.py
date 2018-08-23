@@ -11,7 +11,7 @@ def isextension(extension, file):
 
 def remove_oldfile(dirpath, oldfile):
     """ Wenn eine zusammengefasste Datei bereits vorhanden ist soll diese
-        entfernt werden, da die bestehende Datei sonst erweitert werden würde.
+        entfernt werden, da die bestehende Datei sonst erweitert werden wuerde.
     """
     if exists(join(dirpath, oldfile)):
         print("Entferne alte Datei:", oldfile)
@@ -20,8 +20,8 @@ def remove_oldfile(dirpath, oldfile):
 
 def list_files_byextension(dirpath, extension):
     """ Schreibt den Namen aller Dateien, mit bestimmter Endung, innerhalb
-        eines Verzeichnisses in eine Liste und gibt diese zurück.
-        Wurde keine Datei gefunden, wird eine leere Liste zurückgegeben.
+        eines Verzeichnisses in eine Liste und gibt diese zurueck.
+        Wurde keine Datei gefunden, wird eine leere Liste zurueckgegeben.
     """
     onlyfiles = [file for file in listdir(dirpath)
                  if isfile(join(dirpath, file))
@@ -34,8 +34,8 @@ def list_files_byextension(dirpath, extension):
 
 def list_files(dirpath):
     """ Schreibt den Namen aller Dateien innerhalb eines Verzeichnisses in eine
-        Liste und gibt diese zurück.
-        Wurde keine Datei gefunden, wird eine leere Liste zurückgegeben.
+        Liste und gibt diese zurueck.
+        Wurde keine Datei gefunden, wird eine leere Liste zurueckgegeben.
     """
     onlyfiles = [file for file in listdir(dirpath)
                  if isfile(join(dirpath, file))]
@@ -44,7 +44,7 @@ def list_files(dirpath):
 
 def copyFiles(src, dst):
     """ Kopiert alle Dateien eines Verzeichnisses in ein anderes.
-        Dateien welche im Zielverzeichnis nicht benötigt werden, werden
+        Dateien welche im Zielverzeichnis nicht benoetigt werden, werden
         entfernt.
     """
     if isdir(dst):
@@ -54,7 +54,7 @@ def copyFiles(src, dst):
 
 
 def removeFiles(path):
-    """ Löscht alle JavaScript Dateien die nicht die Endung 'min.js' haben.
+    """ Loescht alle JavaScript Dateien die nicht die Endung 'min.js' haben.
     """
     for file in listdir(path):
         if isfile(join(path, file)) and isextension('js', file):

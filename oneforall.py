@@ -22,11 +22,11 @@ parser.add_option("-r", "--relative-url", action="store", type="string",
                   help="Relativer Pfad zu den Projektdateien (SharePoint).")
 (options, args) = parser.parse_args(sys.argv)
 
-#  Quell Verzeichnis in ein temporäres Arbeitsverzeichnis kopieren.
+#  Quell Verzeichnis in ein temporaeres Arbeitsverzeichnis kopieren.
 copyFiles(options.srcpath, "./temp")
 #  Alle JavaScript Dateien zu einer Minified Datei zusammenfassen.
 merge_files("./temp/js", options.outfile)
-#  Alle JavaScript Dateien außer der Minified Datei entfernen.
+#  Alle JavaScript Dateien ausser der Minified Datei entfernen.
 removeFiles("./temp/js")
 
 if(options.subsite is "."):

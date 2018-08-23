@@ -1,12 +1,12 @@
 from clihandler.nullwriter import mute_stderr
-from filehandler.filehandler import remove_oldfile, list_files_byextension
+from filehandler import remove_oldfile, list_files_byextension
 from slimit import minify
 from os.path import join
 
 
 def join_files(filelist, dirpath):
-    """ Liest den Inhalt der Dateien in der Liste und fügt deren Inhalt zu
-        einem String zusammen und gibt diesen zurück.
+    """ Liest den Inhalt der Dateien in der Liste und fuegt deren Inhalt zu
+        einem String zusammen und gibt diesen zurueck.
         Ist die Option minifyjs=True wird die Datei komprimiert.
     """
     filecontentin = ""
@@ -15,7 +15,7 @@ def join_files(filelist, dirpath):
         filecontentin += filestreamin.read()
         filestreamin.close()
 
-    #  Zusammengeführte Dateien verkleinern.
+    #  Zusammengefuehrte Dateien verkleinern.
     filecontentin = mute_stderr(minify, filecontentin, True)
 
     return filecontentin
@@ -32,17 +32,17 @@ def write_newfile(dirpath, outfile, newfilecontent):
 
 
 def merge_files(dirpath, outfile):
-    """ Fügt mehrere Dateien, innerhalb eines Verzeichnisses, zu einer zusammen
-        und kompremiert JavaScript-Dateien, wenn dies gewünscht ist.
+    """ Fuegt mehrere Dateien, innerhalb eines Verzeichnisses, zu einer zusammen
+        und kompremiert JavaScript-Dateien, wenn dies gewuenscht ist.
     """
     extension = "js"
-    print("\nFühre Dateien im Verzeichnis '" + dirpath + "' zusammen.")
+    print("\nFuehre Dateien im Verzeichnis '" + dirpath + "' zusammen.")
     outfile += ".min." + extension
     remove_oldfile(dirpath, outfile)
     filelist = list_files_byextension(dirpath, extension)
     if(len(filelist) < 1):
-        print("Zusammenführung abgebrochen.")
+        print("Zusammenfuehrung abgebrochen.")
         return
     newfilecontent = join_files(filelist, dirpath)
     write_newfile(dirpath, outfile, newfilecontent)
-    print("Zusammenführung abgeschlossen.")
+    print("Zusammenfuehrung abgeschlossen.")

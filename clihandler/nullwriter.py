@@ -2,17 +2,17 @@ import sys
 
 
 class NullWriter(object):
-    """ Diese Klasse überschreibt die Funktion write(), damit alle
-        Schreibvorgänge ignoriert werden.
+    """ Diese Klasse ueberschreibt die Funktion write(), damit alle
+        Schreibvorgaenge ignoriert werden.
     """
     def write(self, arg):
         pass
 
 
 def mute_stdout(callback, *args):
-    """ Deaktiviert Ausgaben nach stdout für eine Funktion und Aktiviert
-        stdout anschließend wieder.
-        Gibt die Rückgabe der callback-Funktion zurück.
+    """ Deaktiviert Ausgaben nach stdout fuer eine Funktion und Aktiviert
+        stdout anschliessend wieder.
+        Gibt die Rueckgabe der callback-Funktion zurueck.
     """
     nullwrite = NullWriter()
     oldstdout = sys.stdout
@@ -23,9 +23,9 @@ def mute_stdout(callback, *args):
 
 
 def mute_stderr(callback, *args):
-    """ Deaktiviert Ausgaben nach stderr für eine Funktion und Aktiviert
-        stderr anschließend wieder.
-        Gibt die Rückgabe der callback-Funktion zurück.
+    """ Deaktiviert Ausgaben nach stderr fuer eine Funktion und Aktiviert
+        stderr anschliessend wieder.
+        Gibt die Rueckgabe der callback-Funktion zurueck.
     """
     nullwrite = NullWriter()
     oldstderr = sys.stderr

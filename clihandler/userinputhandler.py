@@ -1,10 +1,10 @@
 def checkSlash(string, start=True):
-    """ Prüft ob ein Schrägstrich am Anfang oder am Ende eines Strings
+    """ Prueft ob ein Schraegstrich am Anfang oder am Ende eines Strings
         vorhanden ist.
 
-        :param string: Der zu überprüfende String.
-        :param index: Wenn True wird geprüft ob ein Slash am Anfang ist, bei
-                      False wird der Ende des Strings überprüft.
+        :param string: Der zu ueberpruefende String.
+        :param index: Wenn True wird geprueft ob ein Slash am Anfang ist, bei
+                      False wird der Ende des Strings ueberprueft.
         :return: True wenn ein Slash an der richtigen Stelle gefunden wurde,
                  ansonsten False.
     """
@@ -21,13 +21,13 @@ def checkSlash(string, start=True):
 
 
 def addMissingSlash(string, start=True, end=True):
-    """ Fügt keinen, einen oder zwei Schrägstriche an einen String an.
+    """ Fuegt keinen, einen oder zwei Schraegstriche an einen String an.
 
         :param string: Der zu manipulierende String.
-        :param start: Bei True wird ein Schrägstrich an den Anfang des Strings
-                      gehängt, bei False nicht.
-        :param end: Bei True wird ein Schrägstrich an das Ende des Strings
-                      gehängt, bei False nicht.
+        :param start: Bei True wird ein Schraegstrich an den Anfang des Strings
+                      gehaengt, bei False nicht.
+        :param end: Bei True wird ein Schraegstrich an das Ende des Strings
+                      gehaengt, bei False nicht.
         :return: Der angepasste String.
     """
     if(start):
