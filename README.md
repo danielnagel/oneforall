@@ -1,40 +1,30 @@
-# OneForAll #
+# OneForAll
 
-OneForAll ist ein Tool mit dem alle Schritte bei der Entwicklung einer
-SharePoint Webapp anfallen automatisiert werden.
+Yes the name is inspired by [Boku no Hero Academia](https://bokunoheroacademia.fandom.com/wiki/My_Hero_Academia_Wiki).
+OneForAll aims to automate the process of deploying scripts in on premise SharePoint.
+An imho better alternative written in TypeScript: [SharePoint Browserify Boilerplate](https://github.com/danisenpai/SharePoint-Browserify-Boilerplate)
 
-1. Zusammenfassen und kompremieren aller JavaScript Dateien.
-2. Hochladen aller Dateien ins SharePoint.
 
-Diese Schritte können auch getrennt voneinander ausgeführt werden.
+### Usage
 
-> ## ACHTUNG ##
->
-> Das Tool befindet sich noch in der Entwicklung und ist daher noch nicht ausgiebig auf Fehler getestet worden.
+```
+$ python oneforall.py \[option\]
 
-### Wie verwende ich OneForAll? ###
+Options:
 
-In der Eingabeaufforderung
+  -h, --help
+    The help menu.
+  -s SRCPATH, --sourcedir=SRCPATH
+    Projectpath
+  -o OUTFILE, --outfile=OUTFILE
+    Path to where the minfied files should be stored.
+  -u SUBSITE, --subsite=SUBSITE
+    Optional SharePoint SubSite
+  -r RELATIVE, --relative-url=RELATIVE
+    Relative Path in SharePoint
+```
 
-* python oneforall.py \[option\]
+### TODO
 
-Optionen
-
-* -h, --help
-    * Zeigt alle verfügbaren Optionen an.
-* -s SRCPATH, --sourcedir=SRCPATH
-    * JS Verzeichnis oder Projektverzeichnis
-* -o OUTFILE, --outfile=OUTFILE
-    * Ausgabedatei der zusammengefassten JS
-* -u SUBSITE, --subsite=SUBSITE
-    * Unterwebseite des SharePoint Projekts.
-* -r RELATIVE, --relative-url=RELATIVE
-    * Relativer Pfad zu den Projektdateien (im SharePoint).
-
-### Geplante Erweiterung für OneForAll ###
-
-* Dynamisches erstellen der benötigten Projektstruktur.
-
-### Wer ist verantwortlich für dieses Projekt? ###
-
-* Daniel
+* Work with different kinds of project structures.
+* Document everything in english, back in the days I used to do it in german...

@@ -33,7 +33,7 @@ if(options.subsite is "."):
     print("Projekt wird nicht ins SharePoint kopiert.")
 else:
     #  SharePoint URL und Ziel Bibliothek.
-    sharePointUrl = 'https://sharepoint.propersonal.de'
+    sharePointUrl = ''
     subSiteUrl = addMissingSlash(options.subsite)
     #  Request URL vorbereiten.
     requestUrl = sharePointUrl + subSiteUrl
